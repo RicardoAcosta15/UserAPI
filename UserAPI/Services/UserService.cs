@@ -12,31 +12,40 @@ public class UserService
         _config = config;
     }
 
-    public async Task<UserResponseDto?> RegisterUserAsync(UserRequestDto request)
+    public async Task<(UserResponseDto? user, string? error)> RegisterUserAsync(UserRequestDto request)
     {
+        // Verifica si el correo existe en la bd
         if (await _context.Users.AnyAsync(u => u.Email == request.Email))
-            return null;
+            return (null, "Ya existe un usuario registrado con el correo proporcionado.");
 
+        // Obtiene expresiones regulares del appsettings.json
         var emailRegex = _config["Regex:Email"];
         var passwordRegex = _config["Regex:Password"];
 
-        if (!Regex.IsMatch(request.Email, emailRegex) ||
-            !Regex.IsMatch(request.Password, passwordRegex))
-            return null;
+        // Valida el formato del correo
+        if (!Regex.IsMatch(request.Email, emailRegex))
+            return (null, "El correo ingresado no tiene un formato válido. Ejemplo: usuario@dominio.com");
 
+        // Valida el formato de la contraseña
+        if (!Regex.IsMatch(request.Password, passwordRegex))
+            return (null, "La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número.");
+
+        // Neva instancia de usuario
         var user = new User
         {
             Name = request.Name,
             Email = request.Email,
             Password = request.Password,
             Phones = request.Phones,
-            Token = TokenGenerator.GenerateToken()
+            Token = TokenGenerator.GenerateToken() // Genera UUID como token
         };
 
+        // Persiste en la bd
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
-
-        return new UserResponseDto
+        
+        // Retorna el DTO de respuesta
+        return (new UserResponseDto
         {
             Id = user.Id,
             Created = user.Created,
@@ -44,6 +53,6 @@ public class UserService
             LastLogin = user.LastLogin,
             Token = user.Token,
             IsActive = user.IsActive
-        };
+        }, null);
     }
 }

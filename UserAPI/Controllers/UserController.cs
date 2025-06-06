@@ -14,10 +14,11 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] UserRequestDto request)
     {
-        var result = await _service.RegisterUserAsync(request);
-        if (result == null)
-            return BadRequest(new { mensaje = "El correo ya registrado" });
+        var (result, error) = await _service.RegisterUserAsync(request);
 
-        return Created("", result);
+        if (error != null)
+            return BadRequest(new { mensaje = error }); // Devuelve mensaje de error personalizado
+
+        return Created("", result); // Devuelve 201 con el usuario creado
     }
 }
