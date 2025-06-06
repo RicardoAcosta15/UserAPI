@@ -1,0 +1,32 @@
+# Archivos generados por VS Code
+.vscode/
+.history/
+
+# Archivos de compilación
+bin/
+obj/
+out/
+
+*.user
+*.suo
+*.mdf
+*.ldf
+
+# Archivos generados por Entity Framework
+Migrations/
+
+# logs
+*.log
+
+# Secretos
+appsettings.Development.json
+appsettings.Local.json
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
+
+publish/

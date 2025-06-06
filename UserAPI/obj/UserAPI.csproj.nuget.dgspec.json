@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj": {}
+    "c:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj": {
+    "c:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj",
+        "projectUniqueName": "c:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj",
         "projectName": "UserAPI",
-        "projectPath": "C:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj",
+        "projectPath": "c:\\Projects\\VS Code\\UserAPI\\UserAPI\\UserAPI.csproj",
         "packagesPath": "C:\\Users\\ricar\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\VS Code\\UserAPI\\UserAPI\\obj\\",
+        "outputPath": "c:\\Projects\\VS Code\\UserAPI\\UserAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ricar\\AppData\\Roaming\\NuGet\\NuGet.Config",
