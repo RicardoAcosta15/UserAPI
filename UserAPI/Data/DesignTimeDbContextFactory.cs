@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 {
-    public AppDbContext CreateDbContext(string[] args)
+    public AppDbContext CreateDbContext(string[] args)  // Método que se usa en tiempo de diseño para crear una instancia del DbContext
     {
         // Cargar configuración desde appsettings.json
         IConfigurationRoot configuration = new ConfigurationBuilder()
